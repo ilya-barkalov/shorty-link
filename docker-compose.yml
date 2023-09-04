@@ -10,8 +10,8 @@ services:
     ports:
       - "80:80"
     build:
-      context: SL.WebAPI
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: SL.WebAPI/Dockerfile
     depends_on: 
       - postgres_db
     networks:
