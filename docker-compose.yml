@@ -1,0 +1,29 @@
+version: '3'
+
+networks:
+  some-bridge:
+    driver: bridge
+
+services:
+  app: 
+    container_name: sl_web_api
+    ports:
+      - "80:80"
+    build:
+      context: SL.WebAPI
+      dockerfile: Dockerfile
+    depends_on: 
+      - postgres_db
+    networks:
+      - some-bridge
+
+  postgres_db:
+    container_name: postgres_alpine
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_USER=admin
+    image: postgres:15-alpine
+    networks:
+      - some-bridge
