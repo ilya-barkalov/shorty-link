@@ -16,7 +16,7 @@ public class LinkController : ControllerBase
 
     public LinkController(IMediator mediator) => _mediator = mediator;
 
-    [HttpGet]
+    [HttpGet("get")]
     public async Task<IActionResult> Get([FromQuery] GetLinkQuery query, CancellationToken cancellationToken)
     {
         try
