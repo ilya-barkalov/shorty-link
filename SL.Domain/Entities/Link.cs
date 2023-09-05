@@ -19,5 +19,7 @@ public class Link
     
     public string ShortUrl { get; set; }
 
-    public DateTimeOffset CreatedDate { get; set; } 
+    public DateTimeOffset CreatedDate { get; set; }
+    
+    public ICollection<LinkVisit> Visits { get; set; }
 }

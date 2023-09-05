@@ -4,27 +4,23 @@ using SL.Domain.Entities;
 
 namespace SL.Infrastructure.Persistence.Configurations;
 
-public class LinkConfiguration : IEntityTypeConfiguration<Link>
+public class LinkVisitConfiguration : IEntityTypeConfiguration<LinkVisit>
 {
-    public void Configure(EntityTypeBuilder<Link> builder)
+    public void Configure(EntityTypeBuilder<LinkVisit> builder)
     {
-        builder.ToTable("Link");
+        builder.ToTable("LinkVisit");
 
         builder.HasKey(e => e.Id);
 
-        builder.Property(e => e.OriginalUrl)
+        builder.Property(e => e.LinkId)
             .HasMaxLength(300)
-            .IsRequired();
-        
-        builder.Property(e => e.ShortUrl)
-            .HasMaxLength(100)
             .IsRequired();
         
         builder.Property(e => e.CreatedDate)
             .IsRequired();
 
-        builder.HasMany(e => e.Visits)
-            .WithOne(e => e.Link)
+        builder.HasOne(e => e.Link)
+            .WithMany(e => e.Visits)
             .HasForeignKey(e => e.LinkId)
             .IsRequired();
     }
