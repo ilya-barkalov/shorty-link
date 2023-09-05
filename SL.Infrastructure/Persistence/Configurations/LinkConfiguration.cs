@@ -11,6 +11,8 @@ public class LinkConfiguration : IEntityTypeConfiguration<Link>
         builder.ToTable("Link");
 
         builder.HasKey(e => e.Id);
+        
+        builder.HasIndex(e => e.ShortUrl);
 
         builder.Property(e => e.OriginalUrl)
             .HasMaxLength(300)
