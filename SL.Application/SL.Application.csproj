@@ -14,10 +14,6 @@
 
     <ItemGroup>
         <ProjectReference Include="..\SL.Domain\SL.Domain.csproj" />
-
     </ItemGroup>
-
-
-
 
 </Project>
